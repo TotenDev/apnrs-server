@@ -1,0 +1,18 @@
+node_modules/
+# xcode noise
+*.mode1v3
+*.pbxuser
+*.perspective 
+*.perspectivev3
+*.pyc 
+*~.nib/
+build/
+xcuserdata/
+project.xcworkspace/
+# Textmate - if you build
+*.tm_build_errors
+# old skool
+.svn
+# osx noise
+.DS_Store
+profile

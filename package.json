@@ -1,0 +1,38 @@
+{
+    "name" : "apnrs-server",
+    "description" : "Apple Push Notification Rest Service Server",
+    "version" : "0.0.1a",
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/TotenDev/apnrs-server.git"
+    },
+    "main" : "index.js",
+    "keywords" : [
+        "apns",
+        "push",
+        "Apple Push Notification Rest Server",
+        "Apple Push Notification Service",
+        "ios",
+        "mac"
+    ],
+    "directories" : {
+        "src" : ".",
+        "example" : "example",
+        "test" : "test"
+    },
+    "scripts" : {
+        "test" : "tap test/*.js"
+    },
+    "dependencies" : {
+        "restify" : "1.x.x"
+    },
+    "devDependencies" : {
+        "tap" : "0.0.x"
+    },
+    "license" : "MIT",
+    "author" : {
+        "name" : "TotenDev LTDA",
+        "email" : "support@totendev.com",
+        "url" : "http://totendev"
+    }
+}
