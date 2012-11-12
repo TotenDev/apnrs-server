@@ -25,7 +25,8 @@
     },
     "dependencies" : {
         "restify" : "1.x.x",
-	    "tdmetrics" : "0.0.3"
+	    "tdmetrics" : "0.0.3",
+        "mysql" : "2.0.x"
     },
     "devDependencies" : {
         "tap" : "0.0.x"
