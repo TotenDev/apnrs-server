@@ -20,11 +20,11 @@ tap.test("\nRouting",function (t) {
     t.equal(res.statusCode,404,"(404) Route not found for server credentials. (OK)");
   });
   var client2 = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: { 'Authorization':basicAuthClient,'Accept':"application/json",'Content-Type':"application/json" }});
-  client2.post("/register2",{ hello: 'world' },function (err,req,res,obj) {
+  client2.post("/register21",{ hello: 'world' },function (err,req,res,obj) {
     t.equal(res.statusCode,403,"(403) Forbidden for client credentials with route not found. (OK)");
   });
   var client3 = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: { 'Accept':"application/json",'Content-Type':"application/json" }});
-  client3.post("/register2",{ hello: 'world' },function (err,req,res,obj) {
+  client3.post("/register22",{ hello: 'world' },function (err,req,res,obj) {
     t.equal(res.statusCode,401,"(401) Unauthorized with route not found and no credentials specified. (OK)");
   });
   var client4 = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: { 'Accept':"application/json",'Content-Type':"application/json" }});
