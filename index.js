@@ -6,7 +6,7 @@
 //
 
 var APNRestServer = require('./lib/server.js');
-APNRestServer({clientSecretUser:"clientOI",serverSecretUser:"serverIO" ,commonSecretPass:"man"});
+APNRestServer({clientSecretUser:"clientOI",serverSecretUser:"serverIO" ,commonSecretPass:"man",metrics:{projectID:"99",auth:"Basic dedewdewdew",host:"metrics.totendev.com",port:"8080",path:"/"},database:{}});
 var basicAuthClient = "Basic " + new Buffer("clientOI:man").toString('base64');
 var basicAuthServer = "Basic " + new Buffer("serverIO:man").toString('base64');
 //
