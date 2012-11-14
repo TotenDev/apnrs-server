@@ -2,14 +2,15 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+DROP SCHEMA IF EXISTS `apnrs` ;
 CREATE SCHEMA IF NOT EXISTS `apnrs` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 SHOW WARNINGS;
 USE `apnrs` ;
 
 -- -----------------------------------------------------
--- Table `apnrs`.`Devices`
+-- Table `apnrs`.`apnrs_devices`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `apnrs`.`Devices` (
+CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `active` TINYINT(1) NOT NULL DEFAULT 1 ,
   `token` VARCHAR(64) NOT NULL ,
@@ -23,9 +24,9 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `apnrs`.`Tags`
+-- Table `apnrs`.`apnrs_tags`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `apnrs`.`Tags` (
+CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_tags` (
   `id` INT UNSIGNED NOT NULL ,
   `tag` VARCHAR(45) NOT NULL ,
   `createDate` TIMESTAMP NOT NULL ,
@@ -35,9 +36,9 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `apnrs`.`DevicesTags`
+-- Table `apnrs`.`apnrs_devices_tags`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `apnrs`.`DevicesTags` (
+CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices_tags` (
   `id` INT UNSIGNED NOT NULL ,
   `deviceID` INT NOT NULL ,
   `tagID` INT NOT NULL ,
