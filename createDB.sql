@@ -39,11 +39,17 @@ DROP TABLE IF EXISTS `apnrs`.`apnrs_tags` ;
 
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_tags` (
-  `id` INT UNSIGNED NOT NULL ,
+  `id` INT NOT NULL ,
   `tag` VARCHAR(45) NOT NULL ,
   `createDate` TIMESTAMP NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
+
+SHOW WARNINGS;
+CREATE UNIQUE INDEX `id_UNIQUE` ON `apnrs`.`apnrs_tags` (`id` ASC) ;
+
+SHOW WARNINGS;
+CREATE UNIQUE INDEX `tag_UNIQUE` ON `apnrs`.`apnrs_tags` (`tag` ASC) ;
 
 SHOW WARNINGS;
 
@@ -54,11 +60,14 @@ DROP TABLE IF EXISTS `apnrs`.`apnrs_devices_tags` ;
 
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices_tags` (
-  `id` INT UNSIGNED NOT NULL ,
+  `id` INT NOT NULL ,
   `deviceID` INT NOT NULL ,
   `tagID` INT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
+
+SHOW WARNINGS;
+CREATE UNIQUE INDEX `id_UNIQUE` ON `apnrs`.`apnrs_devices_tags` (`id` ASC) ;
 
 SHOW WARNINGS;
 
