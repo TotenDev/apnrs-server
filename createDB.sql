@@ -10,8 +10,11 @@ USE `apnrs` ;
 -- -----------------------------------------------------
 -- Table `apnrs`.`apnrs_devices`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `apnrs`.`apnrs_devices` ;
+
+SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `active` TINYINT(1) NOT NULL DEFAULT 1 ,
   `token` VARCHAR(64) NOT NULL ,
   `silentStartGMT` TIME NOT NULL ,
@@ -22,10 +25,19 @@ CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices` (
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
+CREATE UNIQUE INDEX `id_UNIQUE` ON `apnrs`.`apnrs_devices` (`id` ASC) ;
+
+SHOW WARNINGS;
+CREATE UNIQUE INDEX `token_UNIQUE` ON `apnrs`.`apnrs_devices` (`token` ASC) ;
+
+SHOW WARNINGS;
 
 -- -----------------------------------------------------
 -- Table `apnrs`.`apnrs_tags`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `apnrs`.`apnrs_tags` ;
+
+SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_tags` (
   `id` INT UNSIGNED NOT NULL ,
   `tag` VARCHAR(45) NOT NULL ,
@@ -38,6 +50,9 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `apnrs`.`apnrs_devices_tags`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `apnrs`.`apnrs_devices_tags` ;
+
+SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices_tags` (
   `id` INT UNSIGNED NOT NULL ,
   `deviceID` INT NOT NULL ,
