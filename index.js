@@ -11,8 +11,8 @@ var basicAuthClient = "Basic " + new Buffer("clientOI:man").toString('base64');
 var basicAuthServer = "Basic " + new Buffer("serverIO:man").toString('base64');
 //
 var restify = require('restify');
-var client1 = restify.createJsonClient({ url: 'http://127.0.0.1:8080/list/devices', headers: { 'Authorization':basicAuthClient,'Accept':"application/json",'Content-Type':"application/json" }});
+var client1 = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: { 'Authorization':basicAuthClient,'Accept':"application/json",'Content-Type':"application/json" }});
 client1.post("/register",{ token: 'pa',tags:["macarrao","marron"] },function (err,req,res,obj) {
   console.log('%d -> %j', res.statusCode, res.headers);
-  console.log('%j', obj);
+  console.log('-- %j', obj);
 });
