@@ -10,7 +10,7 @@ var tap = require("tap"),
     restify = require('restify'),
     queue = require("function-queue")();
     //
-var server = APNRestServer({clientSecretUser:"clientUser",serverSecretUser:"clientServer" ,commonSecretPass:"commonPass",metrics:{projectID:"99",auth:"Basic dedewdewdew",host:"metrics.totendev.com",port:"8080",path:"/"},database:{host:'localhost',user:'root',password:'root',database:'apnrs',port:8889}});
+var server = APNRestServer({clientSecretUser:"clientUser",serverSecretUser:"clientServer" ,commonSecretPass:"commonPass",database:{host:'localhost',user:'root',password:'root',database:'apnrs',port:8889}});
 var basicAuthClient = "Basic " + new Buffer("clientUser:commonPass").toString('base64');
 var basicAuthServer = "Basic " + new Buffer("clientServer:commonPass").toString('base64');
 //
