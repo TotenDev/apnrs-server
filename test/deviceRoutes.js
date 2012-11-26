@@ -24,7 +24,8 @@ tap.test("\nDevice register body",function (t) {
                 {token:'',responseCodeNeeded:204,tags:['blue'],startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'error invalid token registration'},
                 {token:'myToken',responseCodeNeeded:200,tags:['blue'],startDate:'09',endDate:'23',timezone:'what time zome ?',testDescription:'invalid silent time becomes default'},
                 {token:'myToken',responseCodeNeeded:200,tags:['blue'],startDate:'02:00',endDate:'15:00',testDescription:'incomplete silent time becomes default'},
-                {token:'myToken',responseCodeNeeded:200,tags:[],startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'with tags key but not tags'},],
+                {token:'myToken',responseCodeNeeded:200,tags:[],startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'with tags key but not tags'},
+                {token:'myToken',responseCodeNeeded:200,tags:['blue'],startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'full registration'},],
       idx = 0 ;
   t.plan(bodies.length);
   for (var i = 0; i < bodies.length; i++) {
