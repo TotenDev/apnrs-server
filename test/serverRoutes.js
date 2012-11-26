@@ -62,7 +62,7 @@ tap.test("\nAuthentications",function (t) {
 });
 //
 tap.test("\nRoutes",function (t) {
-  var routes = ["/register/","/register","/sendpush/","/sendpush","/stats/devices","/stats/devices/","/stats/push","/stats/push/","/list/devices/","/list/devices","/list/tags/","/list/tags","/list/request","/list/request/","/list/push","/list/push/","/list/feedback","/list/feedback/"];
+  var routes = ["/register/","/register","/sendpush/","/sendpush","/stats/devices","/stats/devices/","/stats/push","/stats/push/","/list/devices/","/list/devices","/list/tags/","/list/tags","/list/push","/list/push/","/list/feedback","/list/feedback/"];
   t.plan(routes.length);
   for (var route in routes) {
    var client = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
