@@ -62,12 +62,22 @@ tap.test("\nAuthentications",function (t) {
 });
 //
 tap.test("\nRoutes",function (t) {
-  var routes = ["/register/","/register","/sendpush/","/sendpush","/stats/devices","/stats/devices/","/stats/push","/stats/push/","/list/devices/","/list/devices","/list/tags/","/list/tags","/list/push","/list/push/","/list/feedback","/list/feedback/"];
+  var routes = ["/register/","/register",
+                "/unregister","/unregister/",
+                "/sendpush/","/sendpush",
+                "/stats/devices","/stats/devices/",
+                "/stats/push","/stats/push/",
+                "/list/devices/","/list/devices",
+                "/list/tags/","/list/tags",
+                "/list/push","/list/push/",
+                "/list/feedback","/list/feedback/"];
+                
   t.plan(routes.length);
   for (var route in routes) {
    var client = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
    client.post(routes[route],{ hello: 'world' },function (err,req,res,obj) {
     if (req.path == '/register' || req.path == '/register/' || 
+        req.path == '/unregister' || req.path == '/unregister/' || 
         req.path == '/list/tags' || req.path == '/list/tags/' || 
         req.path == '/list/devices/' || req.path == '/list/devices') {
       t.equal(res.statusCode,204,"(204) With route '"+ req.path +"'.");

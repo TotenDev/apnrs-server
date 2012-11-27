@@ -6,7 +6,7 @@
 //
 
 var APNRestServer = require('./lib/server.js');
-APNRestServer({clientSecretUser:"clientOI",serverSecretUser:"serverIO" ,commonSecretPass:"man",database:{host:'localhost',user:'root',password:'root',database:'apnrs',port:8889}});
+APNRestServer({clientSecretUser:"clientOI",serverSecretUser:"serverIO" ,commonSecretPass:"man",database:{host:'localhost',user:'root',password:'root',database:'apnrs'}});
 var basicAuthClient = "Basic " + new Buffer("clientOI:man").toString('base64');
 var basicAuthServer = "Basic " + new Buffer("serverIO:man").toString('base64');
 //
