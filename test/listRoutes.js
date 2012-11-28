@@ -33,7 +33,8 @@ tap.test("\nfilling db with data",function (t) {
 //Route '/list/devices'
 tap.test("\nDevice list body",function (t) {
   var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple device list (ASC)'},
-                {order:'DESC',responseCodeNeeded:204,testDescription:'invalid device list'},
+                {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in device list (with substring order)'},
+                {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order in device list'},
                 {order:'',responseCodeNeeded:204,testDescription:'incomplete order in device list'},
                 {responseCodeNeeded:204,testDescription:'missing order in device list'}],
       idx = 0 ;
@@ -53,6 +54,7 @@ tap.test("\nDevice list body",function (t) {
 //Route '/list/tags'
 tap.test("\nTags list body",function (t) {
   var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple tags list (ASC)'},
+                {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in device list (with substring order)'},
                 {order:'DESC',responseCodeNeeded:204,testDescription:'invalid tags list'},
                 {order:'',responseCodeNeeded:204,testDescription:'incomplete order in tags list'},
                 {responseCodeNeeded:204,testDescription:'missing order in tags list'}],
