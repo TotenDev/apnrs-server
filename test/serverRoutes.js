@@ -7,11 +7,12 @@
   
 var tap = require("tap"),
     APNRestServer = require('./../lib/server.js'),
-    restify = require('restify');
-    //
-var server = APNRestServer({clientSecretUser:"clientUser",serverSecretUser:"clientServer" ,commonSecretPass:"commonPass",database:{host:'localhost',user:'root',password:'',database:'apnrs'}});
-var basicAuthClient = "Basic " + new Buffer("clientUser:commonPass").toString('base64');
-var basicAuthServer = "Basic " + new Buffer("clientServer:commonPass").toString('base64');
+    restify = require('restify'),
+    definitions = require('./definitions.js')();
+//
+var server = APNRestServer(definitions.serverOptions);
+var basicAuthClient = definitions.basicAuthClient;
+var basicAuthServer = definitions.basicAuthServer;
 //
 tap.test("\nRouting",function (t) {
   t.plan(4);

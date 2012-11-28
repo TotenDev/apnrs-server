@@ -15,8 +15,4 @@ var client1 = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: 
 client1.post("/register",{ token: 'pa',tags:["macarrao","marron"] },function (err,req,res,obj) {
   console.log('%d -> %j', res.statusCode, res.headers);
   console.log('-- %j', obj);
-  client1.post("/stats/devices",{ startDate: '11/11/2011',endDate:'12/12/2012' },function (err,req,res,obj) {
-    console.log('%d -> %j', res.statusCode, res.headers);
-    console.log('-- %j', obj);
-  });
 });
