@@ -2,93 +2,26 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-DROP SCHEMA IF EXISTS `apnrs` ;
-CREATE SCHEMA IF NOT EXISTS `apnrs` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
-SHOW WARNINGS;
-USE `apnrs` ;
+ALTER TABLE `apnrs`.`apnrs_devices` CHANGE COLUMN `lastRegisterDate` `lastRegisterDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ;
 
--- -----------------------------------------------------
--- Table `apnrs`.`apnrs_devices`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `apnrs`.`apnrs_devices` ;
+ALTER TABLE `apnrs`.`apnrs_tags` CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT 'CURRENT_TIMESTAMP'  ;
 
-SHOW WARNINGS;
-CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `active` TINYINT(1) NOT NULL DEFAULT 1 ,
-  `token` VARCHAR(64) NOT NULL ,
-  `silentStartGMT` TIME NOT NULL ,
-  `silentEndGMT` TIME NOT NULL ,
-  `deviceBadge` TINYINT NOT NULL ,
-  `lastRegisterDate` TIMESTAMP NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
+ALTER TABLE `apnrs`.`apnrs_devices_register` CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT 'CURRENT_TIMESTAMP'  ;
 
-SHOW WARNINGS;
-CREATE UNIQUE INDEX `id_UNIQUE` ON `apnrs`.`apnrs_devices` (`id` ASC) ;
-
-SHOW WARNINGS;
-CREATE UNIQUE INDEX `token_UNIQUE` ON `apnrs`.`apnrs_devices` (`token` ASC) ;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `apnrs`.`apnrs_tags`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `apnrs`.`apnrs_tags` ;
-
-SHOW WARNINGS;
-CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_tags` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `tag` VARCHAR(45) NOT NULL ,
-  `createDate` TIMESTAMP NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-CREATE UNIQUE INDEX `id_UNIQUE` ON `apnrs`.`apnrs_tags` (`id` ASC) ;
-
-SHOW WARNINGS;
-CREATE UNIQUE INDEX `tag_UNIQUE` ON `apnrs`.`apnrs_tags` (`tag` ASC) ;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `apnrs`.`apnrs_devices_tags`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `apnrs`.`apnrs_devices_tags` ;
-
-SHOW WARNINGS;
-CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices_tags` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `deviceID` INT NOT NULL ,
-  `tagID` INT NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-CREATE UNIQUE INDEX `id_UNIQUE` ON `apnrs`.`apnrs_devices_tags` (`id` ASC) ;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `apnrs`.`apnrs_devices_register`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `apnrs`.`apnrs_devices_register` ;
-
-SHOW WARNINGS;
-CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices_register` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `deviceID` INT NOT NULL ,
-  `registering` TINYINT(1) NOT NULL ,
-  `createDate` TIMESTAMP NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-CREATE UNIQUE INDEX `id_UNIQUE` ON `apnrs`.`apnrs_devices_register` (`id` ASC) ;
-
-SHOW WARNINGS;
+CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_messages` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `msg_alert` TEXT NULL DEFAULT NULL ,
+  `msg_sound` VARCHAR(45) NULL DEFAULT NULL ,
+  `msg_badge` INT(11) NULL DEFAULT NULL ,
+  `isBroadcasting` TINYINT(1) NOT NULL ,
+  `tags` TEXT NULL DEFAULT NULL ,
+  `sentDate` TIMESTAMP NOT NULL DEFAULT 'CURRENT_TIMESTAMP' ,
+  `deviceToken` VARCHAR(64) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_swedish_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
