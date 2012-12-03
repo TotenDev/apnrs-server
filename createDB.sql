@@ -20,7 +20,7 @@ CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices` (
   `silentStartGMT` TIME NOT NULL ,
   `silentEndGMT` TIME NOT NULL ,
   `deviceBadge` TINYINT NOT NULL ,
-  `lastRegisterDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `lastRegisterDate` TIMESTAMP NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -41,7 +41,7 @@ SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_tags` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `tag` VARCHAR(45) NOT NULL ,
-  `createDate` TIMESTAMP NOT NULL DEFAULT 'CURRENT_TIMESTAMP' ,
+  `createDate` TIMESTAMP NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -81,7 +81,7 @@ CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices_register` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `deviceID` INT NOT NULL ,
   `registering` TINYINT(1) NOT NULL ,
-  `createDate` TIMESTAMP NOT NULL DEFAULT 'CURRENT_TIMESTAMP' ,
+  `createDate` TIMESTAMP NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -103,7 +103,7 @@ CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_messages` (
   `msg_badge` INT NULL ,
   `isBroadcasting` TINYINT(1) NOT NULL ,
   `tags` TEXT NULL ,
-  `sentDate` TIMESTAMP NOT NULL DEFAULT 'CURRENT_TIMESTAMP' ,
+  `sentDate` TIMESTAMP NOT NULL ,
   `deviceToken` VARCHAR(64) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
