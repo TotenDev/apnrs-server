@@ -80,7 +80,10 @@ tap.test("\nRoutes",function (t) {
     if (req.path == '/register' || req.path == '/register/' || 
         req.path == '/list/tags' || req.path == '/list/tags/' || 
         req.path == '/list/devices/' || req.path == '/list/devices' ||
-        req.path == '/stats/devices/' || req.path == '/stats/devices') {
+        req.path == '/stats/devices/' || req.path == '/stats/devices' ||
+        req.path == '/list/push/' || req.path == '/list/push' ||
+        req.path == '/stats/push/' || req.path == '/stats/push' ||
+        req.path == '/sendpush/' || req.path == '/sendpush') {
       t.equal(res.statusCode,204,"(204) With route '"+ req.path +"'.");
     }else { t.equal(res.statusCode,200,"(200) With route '"+ req.path +"'."); }
    }); 

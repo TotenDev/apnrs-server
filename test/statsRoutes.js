@@ -40,7 +40,8 @@ tap.test("\nStats Devices body",function (t) {
                 {startDate: '11/11',responseCodeNeeded:204,testDescription:'simple stats with incomplete keys'},
                 {responseCodeNeeded:204,testDescription:'simple stats with no keys'}],
       idx = 0 ;
-  t.plan(bodies.length+1);
+      //+3 is the number of 200 status codes
+  t.plan(bodies.length+3);
   for (var i = 0; i < bodies.length; i++) {
     queue.push(function (nextTest) {
       var client = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
