@@ -27,7 +27,7 @@
         "function-queue" 	: "0.0.x",
         "restify" 			: "1.x.x",
         "mysql" 			: "2.0.x",
-        "node_apns"			: "0.0.x",
+        "node_apns"			: "git://github.com/TotenDev/node_apns.git",
 		"hash"				: "0.2.x"
     },
     "devDependencies" : {

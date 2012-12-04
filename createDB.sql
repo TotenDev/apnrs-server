@@ -105,6 +105,7 @@ CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_messages` (
   `tags` TEXT NULL ,
   `sentDate` TIMESTAMP NOT NULL ,
   `deviceToken` VARCHAR(64) NOT NULL ,
+  `status` TEXT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
