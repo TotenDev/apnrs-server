@@ -114,6 +114,25 @@ CREATE UNIQUE INDEX `id_UNIQUE` ON `apnrs`.`apnrs_messages` (`id` ASC) ;
 
 SHOW WARNINGS;
 
+-- -----------------------------------------------------
+-- Table `apnrs`.`apnrs_feedback`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `apnrs`.`apnrs_feedback` ;
+
+SHOW WARNINGS;
+CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_feedback` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `token` VARCHAR(64) NOT NULL ,
+  `msgTimestamp` TIMESTAMP NOT NULL ,
+  `createDate` TIMESTAMP NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+CREATE UNIQUE INDEX `id_UNIQUE` ON `apnrs`.`apnrs_feedback` (`id` ASC) ;
+
+SHOW WARNINGS;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

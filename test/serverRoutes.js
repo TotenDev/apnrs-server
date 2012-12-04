@@ -75,18 +75,7 @@ tap.test("\nRoutes",function (t) {
   t.plan(routes.length);
   for (var route in routes) {
    var client = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
-   client.post(routes[route],{ hello: 'world' },function (err,req,res,obj) {
-    //this is a temporary IF for implemented methos and not implemented methods
-    if (req.path == '/register' || req.path == '/register/' || 
-        req.path == '/list/tags' || req.path == '/list/tags/' || 
-        req.path == '/list/devices/' || req.path == '/list/devices' ||
-        req.path == '/stats/devices/' || req.path == '/stats/devices' ||
-        req.path == '/list/push/' || req.path == '/list/push' ||
-        req.path == '/stats/push/' || req.path == '/stats/push' ||
-        req.path == '/sendpush/' || req.path == '/sendpush') {
-      t.equal(res.statusCode,204,"(204) With route '"+ req.path +"'.");
-    }else { t.equal(res.statusCode,200,"(200) With route '"+ req.path +"'."); }
-   }); 
+   client.post(routes[route],{ hello: 'world' },function (err,req,res,obj) { t.equal(res.statusCode,204,"(204) With route '"+ req.path +"'."); }); 
   }
 });
 
