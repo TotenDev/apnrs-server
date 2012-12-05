@@ -8,7 +8,7 @@ node_js:
 script: "tap test/"
 services: mysql
 before_script:
-  - mysql < createDB.sql
+  - mysql < dev/createDB.sql
 notifications:
   email: dev@totendev.com
   irc:
