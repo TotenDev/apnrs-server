@@ -1,6 +1,6 @@
 {
     "name" : "apnrs-server",
-    "description" : "Apple Push Notification Rest Service Server",
+    "description" : "Apple Push Notification Rest Service Server (apnrs-server)",
     "version" : "0.0.1a",
     "repository" : {
         "type" : "git",
@@ -10,7 +10,7 @@
     "keywords" : [
         "apns",
         "push",
-        "Apple Push Notification Rest Server",
+        "Apple Push Notification Rest Service Server",
         "Apple Push Notification Service",
         "ios",
         "mac"
@@ -27,8 +27,7 @@
         "function-queue" 	: "0.0.x",
         "restify" 			: "1.x.x",
         "mysql" 			: "2.0.x",
-        "node_apns"			: "git://github.com/TotenDev/node_apns.git",
-		"hash"				: "0.2.x"
+        "node_apns"			: "git://github.com/TotenDev/node_apns.git"
     },
     "devDependencies" : {
         "tap" : "0.0.x"
