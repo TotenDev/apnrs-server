@@ -8,7 +8,7 @@ module.exports = function definitions () {
     database:{
       host:'localhost',
       user:'root',
-      password:'root',
+      password:'',
       database:'apnrs'
     },push:{
       cert:"cert",

@@ -40,6 +40,12 @@ Start server
 	
 	$ 'node index.js' OR 'foreman start'
 
+---
+####HTTPS keys
+
+All APNRS is forced to used `https` protocol. An pre-generated key and certificate are in `/dev/` folder, where it should be !! 
+If you want to re-generate those keys, use `make_certificates` in `/dev/`. This is highly recommended for security purposes.
+
 ##Configuration
 
 All Configuration is be done through `index.js` file in root directory.

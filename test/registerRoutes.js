@@ -31,7 +31,7 @@ tap.test("\nDevice register body",function (t) {
   t.plan(bodies.length);
   for (var i = 0; i < bodies.length; i++) {
     queue.push(function (nextTest) {
-      var client = restify.createJsonClient({ url: 'http://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
+      var client = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
       client.post("/register",bodies[idx],function (err,req,res,obj) {
         t.equal(res.statusCode,bodies[idx].responseCodeNeeded,"("+bodies[idx].responseCodeNeeded+") " + bodies[idx].testDescription);
         idx+=1;
