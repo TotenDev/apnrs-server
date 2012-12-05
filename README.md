@@ -80,6 +80,7 @@ Connections are flagged as **service request** or **client request**. Server req
 - `rest.serverSecretUser` - Server request user credential to use with basic auth. **REQUIRED**
 - `rest.commonSecretPass` - Client/Server request password credential to use with basic auth. **REQUIRED**
 - `rest.serverPort` - Listening port. **OPTIONAL** (It'll use this order `(process.env.PORT || options["serverPort"] || 8080);`
+- `rest.requestLimit` - Limit request per second of an IP. **OPTIONAL** (Default is disabled)
 
 ---
 ##### Database Config

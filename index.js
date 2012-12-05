@@ -12,6 +12,7 @@ APNRestServer({
     serverSecretUser:"serverIO",
     commonSecretPass:"man",
     serverPort:5432,
+    requestLimit:100
   },
   database:{
     host:'localhost',
