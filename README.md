@@ -26,7 +26,7 @@ APNRS has been developed as a private, scalable, autonomous and single-app push 
 
 All Stable code will be on `master` branch, any other branch is designated to unstable codes. So if you are installing for production environment, use `master` branch for better experience.
 
-To run APNRS you MUST have mysql server connection and [database configured](https://github.com/TotenDev/apnrs-server/raw/master/createDB.sql). All credentials and preferences can be configured at `index.js` and are described [here](#configuration).
+To run APNRS you MUST have mysql server connection and [database configured](https://github.com/TotenDev/apnrs-server/raw/master/dev/createDB.sql). All credentials and preferences can be configured at `index.js` and are described [here](#configuration).
 
 ---
 
