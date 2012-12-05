@@ -4,7 +4,7 @@
 // created by TotenDev
 // see LICENSE for details.
 //
-  
+require("nodetime").profile();  
 var tap = require("tap"),
     APNRestServer = require('./../lib/server.js'),
     restify = require('restify'),
