@@ -58,9 +58,11 @@ APNRestServer({
     clientSecretUser:"clientOI",
     serverSecretUser:"serverIO",
     commonSecretPass:"man",
-    serverPort:5432
-  },
-  database:{
+    serverPort:5432,
+    requestLimit:100,
+    cert:fs.readFileSync('./dev/certificate.pem').toString(),
+    key:fs.readFileSync('./dev/privatekey.pem').toString()
+  },database:{
     host:'localhost',
     user:'root',
     password:'root',
@@ -79,6 +81,8 @@ Connections are flagged as **service request** or **client request**. Server req
 - `rest.clientSecretUser` - Client request user credential to use with basic auth. **REQUIRED**
 - `rest.serverSecretUser` - Server request user credential to use with basic auth. **REQUIRED**
 - `rest.commonSecretPass` - Client/Server request password credential to use with basic auth. **REQUIRED**
+- `rest.cert` - Secure protocol (HTTPS) certificate file content. **REQUIRED**
+- `rest.key` - Secure protocol (HTTPS) private key file content. **REQUIRED**
 - `rest.serverPort` - Listening port. **OPTIONAL** (It'll use this order `(process.env.PORT || options["serverPort"] || 8080);`
 - `rest.requestLimit` - Limit request per second of an IP. **OPTIONAL** (Default is disabled)
 
@@ -93,8 +97,8 @@ Database is heavily used for operations like store and fetch data in almost all 
 ---
 ##### Push config
 Push configuration to connect when sending a message and in feedback service too,
-- `push.cert` - Push notifications server certificate file directory. **REQUIRED**
-- `push.key` - Push notifications server key file directory. **REQUIRED**
+- `push.cert` - Push notifications server certificate file content. **REQUIRED**
+- `push.key` - Push notifications server key file content. **REQUIRED**
 
 
 ##Rest API

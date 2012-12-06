@@ -3,7 +3,11 @@ module.exports = function definitions () {
     rest:{
       clientSecretUser:"clientOI",
       serverSecretUser:"serverIO",
-      commonSecretPass:"commonPass"
+      commonSecretPass:"commonPass",
+      serverPort:8080,
+      requestLimit:100,
+      cert:fs.readFileSync('./../dev/certificate.pem').toString(),
+      key:fs.readFileSync('./../dev/privatekey.pem').toString()
     },
     database:{
       host:'localhost',
