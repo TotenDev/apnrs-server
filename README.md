@@ -58,7 +58,7 @@ APNRestServer({
     clientSecretUser:"clientOI",
     serverSecretUser:"serverIO",
     commonSecretPass:"man",
-    serverPort:5432,
+    serverPort:5432
   },
   database:{
     host:'localhost',
