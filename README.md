@@ -102,7 +102,7 @@ Push configuration to connect when sending a message and in feedback service too
 
 
 ##Rest API
-[HERE](apnrs-server/raw/master/docs/rest.md)
+[HERE](https://github.com/TotenDev/apnrs-server/blob/master/docs/rest.md)
 
 ## Contributing
 1. Fork it
