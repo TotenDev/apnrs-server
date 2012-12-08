@@ -19,14 +19,14 @@ tap.test("\nDevice register body",function (t) {
   var bodies = [{token:'myToken',responseCodeNeeded:200,testDescription:'simple device registration'},
                 {token:'myToken',tags:['red','blue'],responseCodeNeeded:200,testDescription:'device w/tags registration'},
                 {token:'myToken',tags:['blue'],responseCodeNeeded:200,testDescription:'device w/tag registration'},
-                {token:'myToken',tags:['blue'],responseCodeNeeded:200,startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'device w/tag&silentTime registration'},
-                {token:'myToken',responseCodeNeeded:200,startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'device w/silentTime registration'},
-                {responseCodeNeeded:204,tags:['blue'],startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'error no token registration'},
-                {token:'',responseCodeNeeded:204,tags:['blue'],startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'error invalid token registration'},
-                {token:'myToken',responseCodeNeeded:200,tags:['blue'],startDate:'09',endDate:'23',timezone:'what time zome ?',testDescription:'invalid silent time becomes default'},
-                {token:'myToken',responseCodeNeeded:200,tags:['blue'],startDate:'02:00',endDate:'15:00',testDescription:'incomplete silent time becomes default'},
-                {token:'myToken',responseCodeNeeded:200,tags:[],startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'with tags key but not tags'},
-                {token:'myToken',responseCodeNeeded:200,tags:['blue'],startDate:'09:00',endDate:'23:00',timezone:'-0300',testDescription:'full registration'},],
+                {token:'myToken',tags:['blue'],responseCodeNeeded:200,silentTime:{startDate:'09:00',endDate:'23:00',timezone:'-0300'},testDescription:'device w/tag&silentTime registration'},
+                {token:'myToken',responseCodeNeeded:200,silentTime:{startDate:'09:00',endDate:'23:00',timezone:'-0300'},testDescription:'device w/silentTime registration'},
+                {responseCodeNeeded:204,tags:['blue'],silentTime:{startDate:'09:00',endDate:'23:00',timezone:'-0300'},testDescription:'error no token registration'},
+                {token:'',responseCodeNeeded:204,tags:['blue'],silentTime:{startDate:'09:00',endDate:'23:00',timezone:'-0300'},testDescription:'error invalid token registration'},
+                {token:'myToken',responseCodeNeeded:200,tags:['blue'],silentTime:{startDate:'09',endDate:'23',timezone:'what time zome ?'},testDescription:'invalid silent time becomes default'},
+                {token:'myToken',responseCodeNeeded:200,tags:['blue'],silentTime:{startDate:'02:00',endDate:'15:00'},testDescription:'incomplete silent time becomes default'},
+                {token:'myToken',responseCodeNeeded:200,tags:[],silentTime:{startDate:'09:00',endDate:'23:00',timezone:'-0300'},testDescription:'with tags key but not tags'},
+                {token:'myToken',responseCodeNeeded:200,tags:['blue'],silentTime:{startDate:'09:00',endDate:'23:00',timezone:'-0300'},testDescription:'full registration'},],
       idx = 0 ;
   t.plan(bodies.length);
   for (var i = 0; i < bodies.length; i++) {
