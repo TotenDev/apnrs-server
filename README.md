@@ -107,6 +107,18 @@ Push configuration to connect when sending a message and in feedback service too
 - `push.cert` - Push notifications server certificate file content. **REQUIRED**
 - `push.key` - Push notifications server key file content. **REQUIRED**
 
+**Generating keys**
+
+Request the push certificate from Apple, and export your developer private key as a .p12 file from keychain.
+You should have an `.cer` file which is your push certificate and an `.p12` file which is your developer identity.
+
+Now in the same directory execute: (It'll ask you the password which you used to export your `.p12` file.) 
+
+```
+$ openssl x509 -in cert.cer -inform DER -outform PEM -out cert.pem
+$ openssl pkcs12 -in key.p12 -out key.pem -nodes
+```
+
 
 ##Rest API
 [HERE](https://github.com/TotenDev/apnrs-server/blob/master/docs/rest.md)
