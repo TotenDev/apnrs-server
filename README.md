@@ -29,6 +29,13 @@ All Stable code will be on `master` branch, any other branch is designated to un
 To run APNRS you MUST have mysql server connection and [database configured](https://github.com/TotenDev/apnrs-server/raw/master/dev/createDB.sql). All credentials and preferences can be configured at `index.js` and are described [here](#configuration).
 
 ---
+To use development gateways you must use the code below, so it'll use sandbox gateways to send push notifications.
+
+```
+process.env['apnsDev'] = "TRUE";
+```
+
+---
 
 After configured your environment you can run commands below to start APNRS:
 
