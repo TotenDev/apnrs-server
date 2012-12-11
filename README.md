@@ -109,8 +109,8 @@ Push configuration to connect when sending a message and in feedback service too
 
 **Generating keys**
 
-Request the push certificate from Apple (`.cer`), and export the downloaded certificate as a .p12 file from keychain (after the downloaded certificate from apple added).
-You should have an `.cer` file which is your push certificate and an `.p12` file which is your signed push certificate.
+Download the push certificate from Apple (`.cer`), and export the downloaded certificate as a .p12 file from keychain (after added the downloaded certificate to keychain).
+Now you should have an `.cer` file which is your push certificate and an `.p12` file which is your signed push certificate.
 
 Now in the same directory execute: (It'll ask you the password which you used to export your `.p12` file.) 
 
