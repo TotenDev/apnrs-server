@@ -11,10 +11,10 @@ var options = {
     clientSecretUser:"clientOI",
     serverSecretUser:"serverIO",
     commonSecretPass:"man",
-    serverPort:5432,
-    requestLimit:100,
-    cert:fs.readFileSync('./dev/certificate.pem').toString(),
-    key:fs.readFileSync('./dev/privatekey.pem').toString()
+    serverPort:8080,
+    requestLimit:100//,
+//    cert:fs.readFileSync('./dev/certificate.pem').toString(),
+//    key:fs.readFileSync('./dev/privatekey.pem').toString()
   },database:{
     host:'localhost',
     user:'root',
