@@ -88,8 +88,8 @@ Connections are flagged as **service request** or **client request**. Server req
 - `rest.clientSecretUser` - Client request user credential to use with basic auth. **REQUIRED**
 - `rest.serverSecretUser` - Server request user credential to use with basic auth. **REQUIRED**
 - `rest.commonSecretPass` - Client/Server request password credential to use with basic auth. **REQUIRED**
-- `rest.cert` - Secure protocol (HTTPS) certificate file content. **REQUIRED**
-- `rest.key` - Secure protocol (HTTPS) private key file content. **REQUIRED**
+- `rest.cert` - Secure protocol (HTTPS) certificate file content. **OPTIONAL** (if not specified it won't use ssl)
+- `rest.key` - Secure protocol (HTTPS) private key file content. **OPTIONAL** (if not specified it won't use ssl)
 - `rest.serverPort` - Listening port. **OPTIONAL** (It'll use this order `(process.env.PORT || options["serverPort"] || 8080);`
 - `rest.requestLimit` - Limit request per second of an IP. **OPTIONAL** (Default is disabled)
 

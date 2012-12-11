@@ -21,8 +21,8 @@ var options = {
     password:'root',
     database:'apnrs'
   },push:{
-    cert:"cert",
-    key:"key"
+    cert:fs.readFileSync('./dev/cert.pem'),
+    key:fs.readFileSync('./dev/key.pem')
   }
 };
 
