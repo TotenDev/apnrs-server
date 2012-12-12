@@ -2,6 +2,7 @@
 // today is 10/14/12, it is now 10:25 PM
 // created by TotenDev
 // see LICENSE for details.
+process.env['apnsDev'] = "TRUE";
 var APNRestServiceServer = require('./lib/server.js'),
                       fs = require('fs');
 
