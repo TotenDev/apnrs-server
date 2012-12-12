@@ -1,6 +1,6 @@
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DROP SCHEMA IF EXISTS `apnrs` ;
 CREATE SCHEMA IF NOT EXISTS `apnrs` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
@@ -15,11 +15,11 @@ DROP TABLE IF EXISTS `apnrs`.`apnrs_devices` ;
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `active` TINYINT(1) NOT NULL DEFAULT 1 ,
+  `active` TINYINT(1)  NOT NULL DEFAULT 1 ,
   `token` VARCHAR(64) NOT NULL ,
   `silentStartGMT` TIME NOT NULL ,
   `silentEndGMT` TIME NOT NULL ,
-  `deviceBadge` TINYINT NOT NULL ,
+  `badge` TINYINT NOT NULL ,
   `lastRegisterDate` TIMESTAMP NOT NULL DEFAULT  NOW() ON UPDATE NOW() ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -80,7 +80,7 @@ SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_devices_register` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `deviceID` INT NOT NULL ,
-  `registering` TINYINT(1) NOT NULL ,
+  `registering` TINYINT(1)  NOT NULL ,
   `createDate` TIMESTAMP NOT NULL DEFAULT  NOW() ON UPDATE NOW() ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -101,10 +101,10 @@ CREATE  TABLE IF NOT EXISTS `apnrs`.`apnrs_messages` (
   `msg_alert` TEXT NULL ,
   `msg_sound` VARCHAR(45) NULL ,
   `msg_badge` INT NULL ,
-  `isBroadcasting` TINYINT(1) NOT NULL ,
+  `isBroadcasting` TINYINT(1)  NOT NULL ,
   `tags` TEXT NULL ,
   `sentDate` TIMESTAMP NOT NULL DEFAULT  NOW() ON UPDATE NOW() ,
-  `deviceToken` VARCHAR(64) NOT NULL ,
+  `token` VARCHAR(64) NOT NULL ,
   `status` TEXT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
