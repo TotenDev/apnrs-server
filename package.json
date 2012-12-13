@@ -23,6 +23,10 @@
     "scripts" : {
         "test" : "tap test/*.js"
     },
+    "engines": {
+      "node": ">= 0.4",
+      "npm":  "1.1.x"
+    },
     "dependencies" : {
         "function-queue" 	: "0.0.x",
         "restify" 			: "1.x.x",
