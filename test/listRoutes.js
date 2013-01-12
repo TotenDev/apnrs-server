@@ -34,12 +34,12 @@ tap.test("\nfilling db with data",function (t) {
 tap.test("\nDevice list body",function (t) {
   var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple device list (ASC)'},
                 {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in device list (with substring order)'},
-                {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order in device list'},
+                {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order length in device list'},
                 {order:'DAA',responseCodeNeeded:204,testDescription:'invalid order in device list'},
                 {order:'',responseCodeNeeded:200,testDescription:'incomplete order in device list'},
-                {responseCodeNeeded:204,testDescription:'missing order in device list'}],
+                {responseCodeNeeded:200,testDescription:'missing order in device list'}],
       idx = 0 ;
-  t.plan(bodies.length+1);
+  t.plan(bodies.length+3);
   for (var i = 0; i < bodies.length; i++) {
     queue.push(function (nextTest) {
       var client = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
@@ -59,14 +59,35 @@ tap.test("\nTags list body",function (t) {
                 {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order length in tags list'},
                 {order:'DAA',responseCodeNeeded:204,testDescription:'invalid order in tags list'},
                 {order:'',responseCodeNeeded:200,testDescription:'incomplete order in tags list'},
-                {responseCodeNeeded:204,testDescription:'missing order in tags list'}],
+                {responseCodeNeeded:200,testDescription:'missing order in tags list'}],
       idx = 0 ;
-  t.plan(bodies.length+1);
+  t.plan(bodies.length+3);
   for (var i = 0; i < bodies.length; i++) {
     queue.push(function (nextTest) {
       var client = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
       client.post("/list/tags",bodies[idx],function (err,req,res,obj) {
         if (bodies[idx].responseCodeNeeded == 200 && obj.length > 1) { t.ok(true,'contains objects in list tags'); }
+        t.equal(res.statusCode,bodies[idx].responseCodeNeeded,"("+bodies[idx].responseCodeNeeded+") " + bodies[idx].testDescription);
+        idx+=1;
+        nextTest();
+      });    
+    });
+  }
+});
+//Route '/list/push'
+tap.test("\nPush list body",function (t) {
+  var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple push list (ASC)'},
+                {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in push list (with substring order)'},
+                {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order length in push list'},
+                {order:'DAA',responseCodeNeeded:204,testDescription:'invalid order in push list'},
+                {order:'',responseCodeNeeded:200,testDescription:'incomplete order in push list'},
+                {responseCodeNeeded:200,testDescription:'missing order in push list'}],
+      idx = 0 ;
+  t.plan(bodies.length);
+  for (var i = 0; i < bodies.length; i++) {
+    queue.push(function (nextTest) {
+      var client = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
+      client.post("/list/push",bodies[idx],function (err,req,res,obj) {
         t.equal(res.statusCode,bodies[idx].responseCodeNeeded,"("+bodies[idx].responseCodeNeeded+") " + bodies[idx].testDescription);
         idx+=1;
         nextTest();
