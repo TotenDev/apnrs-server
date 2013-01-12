@@ -38,7 +38,7 @@ tap.test("\nAuthentications",function (t) {
   t.plan(6);
   var client = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
   client.post("/list/tags/",{ hello: 'world' },function (err,req,res,obj) {
-    t.equal(res.statusCode,204,"(204) With server credentials. (no properly body)");
+    t.equal(res.statusCode,200,"(200) With server credentials. (no properly body)");
   });
   var client1 = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthClient,'Accept':"application/json",'Content-Type':"application/json" }});
   client1.post("/register/",{ hello: 'world' },function (err,req,res,obj) {
@@ -75,7 +75,10 @@ tap.test("\nRoutes",function (t) {
   t.plan(routes.length);
   for (var route in routes) {
    var client = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
-   client.post(routes[route],{ hello: 'world' },function (err,req,res,obj) { t.equal(res.statusCode,204,"(204) With route '"+ req.path +"'."); }); 
+   client.post(routes[route],{ hello: 'world' },function (err,req,res,obj) { 
+    if (req.path.match('/list/')) { t.equal(res.statusCode,200,"(200) With route '"+ req.path +"'.");  }
+    else { t.equal(res.statusCode,204,"(204) With route '"+ req.path +"'.");  }
+   }); 
   }
 });
 

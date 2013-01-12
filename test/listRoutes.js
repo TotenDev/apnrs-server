@@ -95,6 +95,27 @@ tap.test("\nPush list body",function (t) {
     });
   }
 });
+//Route '/list/feedback'
+tap.test("\nFeedback list body",function (t) {
+  var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple feedback list (ASC)'},
+                {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in feedback list (with substring order)'},
+                {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order length in feedback list'},
+                {order:'DAA',responseCodeNeeded:204,testDescription:'invalid order in feedback list'},
+                {order:'',responseCodeNeeded:200,testDescription:'incomplete order in feedback list'},
+                {responseCodeNeeded:200,testDescription:'missing order in feedback list'}],
+      idx = 0 ;
+  t.plan(bodies.length);
+  for (var i = 0; i < bodies.length; i++) {
+    queue.push(function (nextTest) {
+      var client = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
+      client.post("/list/feedback",bodies[idx],function (err,req,res,obj) {
+        t.equal(res.statusCode,bodies[idx].responseCodeNeeded,"("+bodies[idx].responseCodeNeeded+") " + bodies[idx].testDescription);
+        idx+=1;
+        nextTest();
+      });    
+    });
+  }
+});
 setTimeout(function () {
     console.log("closing server");
     server.closeServer();
