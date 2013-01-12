@@ -35,7 +35,8 @@ tap.test("\nDevice list body",function (t) {
   var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple device list (ASC)'},
                 {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in device list (with substring order)'},
                 {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order in device list'},
-                {order:'',responseCodeNeeded:204,testDescription:'incomplete order in device list'},
+                {order:'DAA',responseCodeNeeded:204,testDescription:'invalid order in device list'},
+                {order:'',responseCodeNeeded:200,testDescription:'incomplete order in device list'},
                 {responseCodeNeeded:204,testDescription:'missing order in device list'}],
       idx = 0 ;
   t.plan(bodies.length+1);
