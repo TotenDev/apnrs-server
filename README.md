@@ -2,9 +2,6 @@
 =============
 
 
-**[Alpha Version]**(not for production yet)
-
-
 APNRS has been developed as a private, scalable, autonomous and single-app push notification server. The main goal of this project is to be a standalone push solution for iOS apps.
 
 [![Build Status](https://secure.travis-ci.org/TotenDev/apnrs-server.png?branch=master)](http://travis-ci.org/TotenDev/apnrs-server)

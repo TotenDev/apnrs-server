@@ -1,6 +1,7 @@
 ##General Methods
 
 ####Register device (POST)
+- Authentication: Client & Server credentials
 - Method: `POST`
 - URL: `example.com/register/` OR `example.com/register`	
 - Body Values:
@@ -30,6 +31,7 @@
 	
 ---
 ####Send Push Message (POST)
+- Authentication: Server credentials
 - Method: `POST`
 - URL: `example.com/sendpush/` OR `example.com/sendpush`	
 - Body Values:
@@ -43,7 +45,7 @@
 	
 	**Sample**
 ```
-TODO
+{"tokens":["AAAAAAAAa1e9077394ca80f9aAAAAAAAAc52a46fb8bccef3606baaddAAAAAAAA"],"msg":{"alert":"What's up ?","badge":"+1"}}
 ```
 - Success codes: 
 	- `200`
@@ -57,6 +59,7 @@ TODO
 
 
 ####Stats Devices (POST)
+- Authentication: Server credentials
 - Method: `POST`
 - URL: `example.com/stats/devices/` OR `example.com/stats/devices`
 - Body Values:
@@ -79,6 +82,7 @@ TODO
 
 ---
 ####Stats Push Notifications (POST)
+- Authentication: Server credentials
 - Method: `POST`
 - URL: `example.com/stats/push/` OR `example.com/stats/push`	
 - Body Values:
@@ -104,6 +108,7 @@ TODO
 
 
 ####List Devices (POST)
+- Authentication: Server credentials
 - Method: `POST`
 - URL: `example.com/list/devices/` OR `example.com/list/devices`
 - Body Values:
@@ -124,6 +129,7 @@ TODO
 
 ---
 ####List Tags (POST)
+- Authentication: Server credentials
 - Method: `POST`
 - URL: `example.com/list/tags/` OR `example.com/list/tags`
 - Body Values:
@@ -144,6 +150,7 @@ TODO
 	
 ---
 ####List Push (POST)
+- Authentication: Server credentials
 - Method: `POST`
 - URL: `example.com/list/push/` OR `example.com/list/push`
 - Body Values:
@@ -164,6 +171,7 @@ TODO
 	
 ---
 ####List Feedback calls (POST)
+- Authentication: Server credentials
 - Method: `POST`
 - URL: `example.com/list/feedback/` OR `example.com/list/feedback`
 - Body Values:
