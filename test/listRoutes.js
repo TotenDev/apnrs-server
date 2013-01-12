@@ -31,7 +31,7 @@ tap.test("\nfilling db with data",function (t) {
   }
 });
 //Route '/list/devices'
-tap.test("\nDevice list body",function (t) {
+tap.test("\nDevice list",function (t) {
   var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple device list (ASC)'},
                 {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in device list (with substring order)'},
                 {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order length in device list'},
@@ -53,7 +53,7 @@ tap.test("\nDevice list body",function (t) {
   }
 });
 //Route '/list/tags'
-tap.test("\nTags list body",function (t) {
+tap.test("\nTags list",function (t) {
   var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple tags list (ASC)'},
                 {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in tags list (with substring order)'},
                 {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order length in tags list'},
@@ -75,7 +75,7 @@ tap.test("\nTags list body",function (t) {
   }
 });
 //Route '/list/push'
-tap.test("\nPush list body",function (t) {
+tap.test("\nPush list",function (t) {
   var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple push list (ASC)'},
                 {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in push list (with substring order)'},
                 {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order length in push list'},
@@ -96,7 +96,7 @@ tap.test("\nPush list body",function (t) {
   }
 });
 //Route '/list/feedback'
-tap.test("\nFeedback list body",function (t) {
+tap.test("\nFeedback list",function (t) {
   var bodies = [{order:'ASC',responseCodeNeeded:200,testDescription:'simple feedback list (ASC)'},
                 {order:'ASCA',responseCodeNeeded:204,testDescription:'invalid order in feedback list (with substring order)'},
                 {order:'DESC',responseCodeNeeded:204,testDescription:'invalid order length in feedback list'},

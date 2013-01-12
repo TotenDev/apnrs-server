@@ -31,7 +31,7 @@ tap.test("\nfilling db with data",function (t) {
   }
 });
 //Route '/stats/devices'
-tap.test("\nStats Devices body",function (t) {
+tap.test("\nStats Devices",function (t) {
   var bodies = [{startDate: '11/11/2012',endDate:'12/12/2012',responseCodeNeeded:200,testDescription:'simple stats without hours...'},
                 {startDate: '11/11/2012 09:09:12',endDate:'12/12/2012 08:00:00',responseCodeNeeded:200,testDescription:'simple stats with full date'},
                 {startDate: '11/11/2012',endDate:'12/12/2012 08:00:00',responseCodeNeeded:200,testDescription:'simple stats with mix dates'},
@@ -46,6 +46,30 @@ tap.test("\nStats Devices body",function (t) {
     queue.push(function (nextTest) {
       var client = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
       client.post("/stats/devices",bodies[idx],function (err,req,res,obj) {
+        if (bodies[idx].responseCodeNeeded == 200) { t.ok(true,'contains objects in list tags'); }
+        t.equal(res.statusCode,bodies[idx].responseCodeNeeded,"("+bodies[idx].responseCodeNeeded+") " + bodies[idx].testDescription);
+        idx+=1;
+        nextTest();
+      });    
+    });
+  }
+});
+//Route '/stats/push'
+tap.test("\nStats push",function (t) {
+  var bodies = [{startDate: '11/11/2012',endDate:'12/12/2012',responseCodeNeeded:200,testDescription:'simple stats without hours...'},
+                {startDate: '11/11/2012 09:09:12',endDate:'12/12/2012 08:00:00',responseCodeNeeded:200,testDescription:'simple stats with full date'},
+                {startDate: '11/11/2012',endDate:'12/12/2012 08:00:00',responseCodeNeeded:200,testDescription:'simple stats with mix dates'},
+                {startDate: '11/11',endDate:'12/10',responseCodeNeeded:204,testDescription:'simple stats with incomplete date'},
+                {startDate: '11/11',endDate:'12',responseCodeNeeded:204,testDescription:'simple stats with incomplete date'},
+                {startDate: '11/11',responseCodeNeeded:204,testDescription:'simple stats with incomplete keys'},
+                {responseCodeNeeded:204,testDescription:'simple stats with no keys'}],
+      idx = 0 ;
+      //+5 is the number of 200 status codes
+  t.plan(bodies.length+3);
+  for (var i = 0; i < bodies.length; i++) {
+    queue.push(function (nextTest) {
+      var client = restify.createJsonClient({ url: 'https://127.0.0.1:8080', headers: { 'Authorization':basicAuthServer,'Accept':"application/json",'Content-Type':"application/json" }});
+      client.post("/stats/push",bodies[idx],function (err,req,res,obj) {
         if (bodies[idx].responseCodeNeeded == 200) { t.ok(true,'contains objects in list tags'); }
         t.equal(res.statusCode,bodies[idx].responseCodeNeeded,"("+bodies[idx].responseCodeNeeded+") " + bodies[idx].testDescription);
         idx+=1;

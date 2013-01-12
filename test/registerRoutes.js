@@ -15,7 +15,7 @@ var server = APNRestServer(definitions.serverOptions);
 var basicAuthClient = definitions.basicAuthClient;
 var basicAuthServer = definitions.basicAuthServer;
 //Route '/register'
-tap.test("\nDevice register body",function (t) {
+tap.test("\nDevice register",function (t) {
   var bodies = [{token:'myToken',responseCodeNeeded:200,testDescription:'simple device registration'},
                 {token:'myToken',tags:['red','blue'],responseCodeNeeded:200,testDescription:'device w/tags registration'},
                 {token:'myToken',tags:['blue'],responseCodeNeeded:200,testDescription:'device w/tag registration'},
